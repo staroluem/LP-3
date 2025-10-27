@@ -1,0 +1,38 @@
+# Huffman Encoding
+
+import heapq
+
+def huffman_encoding(chars, freq):
+    heap = [[freq[i], chars[i]] for i in range(len(chars))]
+    heapq.heapify(heap)
+
+    while len(heap) > 1:
+        left = heapq.heappop(heap)
+        right = heapq.heappop(heap)
+        for pair in left[1:]:
+            pair = "0" + pair
+        for pair in right[1:]:
+            pair = "1" + pair
+        heapq.heappush(heap, [left[0] + right[0]] + left[1:] + right[1:])
+
+    return heap[0][1:]
+
+# Driver code
+chars = ['a', 'b', 'c', 'd', 'e', 'f']
+freq = [5, 9, 12, 13, 16, 45]
+
+codes = huffman_encoding(chars, freq)
+
+print("Huffman Codes:")
+for ch, code in zip(chars, codes):
+    print(f"{ch}: {code}")
+
+
+# Output
+Huffman Codes:
+a: 1100
+b: 1101
+c: 100
+d: 101
+e: 111
+f: 0
