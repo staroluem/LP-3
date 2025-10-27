@@ -1,0 +1,26 @@
+def print_solution(board):
+    for row in board:
+        print(" ".join("Q" if c else "." for c in row))
+    print()
+
+def is_safe(board, row, col, n):
+    for i in range(row):
+        if board[i][col] or \
+           (col - row + i >= 0 and board[i][col - row + i]) or \
+           (col + row - i < n and board[i][col + row - i]):
+            return False
+    return True
+
+def solve_nqueens(board, row, n):
+    if row == n:
+        print_solution(board)
+        return
+    for col in range(n):
+        if is_safe(board, row, col, n):
+            board[row][col] = 1
+            solve_nqueens(board, row + 1, n)
+            board[row][col] = 0
+
+n = int(input("Enter number of queens: "))
+board = [[0]*n for _ in range(n)]
+solve_nqueens(board, 0, n)
