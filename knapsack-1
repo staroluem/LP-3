@@ -1,0 +1,21 @@
+def fractional_knapsack(value, weight, capacity):
+    n = len(value)
+    ratio = [(value[i] / weight[i], value[i], weight[i]) for i in range(n)]
+    ratio.sort(reverse=True)
+
+    total_value = 0.0
+    for r, val, wt in ratio:
+        if capacity >= wt:
+            total_value += val
+            capacity -= wt
+        else:
+            total_value += r * capacity
+            break
+    return total_value
+
+value = [60, 100, 120]
+weight = [10, 20, 30]
+capacity = 50
+
+max_value = fractional_knapsack(value, weight, capacity)
+print("Maximum value in Knapsack =", max_value)
