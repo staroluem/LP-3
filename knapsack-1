@@ -13,9 +13,17 @@ def fractional_knapsack(value, weight, capacity):
             break
     return total_value
 
-value = [60, 100, 120]
-weight = [10, 20, 30]
-capacity = 50
+n=int(input("Enter no. of items:"))
+print("Enter wt and vals:")
+weight=[]
+value=[]
+capacity=int(input("Enter capacity :"))
 
-max_value = fractional_knapsack(value, weight, capacity)
-print("Maximum value in Knapsack =", max_value)
+for i in range(n):
+    w= int(input(f"Weight {i+1}:"))
+    v = int(input(f"Value {i+1}:"))
+    weight.append(w)
+    value.append(v)
+print(f"Total Knapsack is {fractional_knapsack(value, weight, capacity)} ")
+
+    
