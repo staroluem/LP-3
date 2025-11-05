@@ -11,3 +11,6 @@ def huffman_codes(text):
         for p in hi[1:]: p[1] = '1' + p[1]
         heapq.heappush(heap, [lo[0] + hi[0]] + lo[1:] + hi[1:])
     return dict(sorted(heap[0][1:], key=lambda x: x[0]))
+
+text=input()
+print("Huffman code:",text)
