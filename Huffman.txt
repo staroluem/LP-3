@@ -13,4 +13,5 @@ def huffman_codes(text):
     return dict(sorted(heap[0][1:], key=lambda x: x[0]))
 
 text=input()
-print("Huffman code:",text)
+print("Huffman code:",huffman_codes(text))
+
